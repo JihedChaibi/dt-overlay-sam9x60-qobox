@@ -26,9 +26,9 @@ located. By default, KERNEL_BUILD_DIR is set to the same directory as KERNEL_DIR
 shouldn't be changed if you have the habit of compiling your kernel within the Linux 
 source tree 
 
-The following example shows how to build the overlays for sama5d2_xplained:
+The following example shows how to build the overlays for sam9x60_curiosity:
 
-    $ make sama5d2_xplained_dtbos
+    $ make sam9x60_curiosity
 
 ## 3. Build FIT image
 
@@ -50,9 +50,9 @@ kernel within the Linux source tree.
 * mkimage is installed on the development machine and the Device Tree Compiler 
 from Linux kernel is in the PATH environment variable 
 
-The following example shows how to build the FIT image for sama5d2_xplained:
+The following example shows how to build the FIT image for sam9x60_curiosity:
 
-    $ make sama5d2_xplained.itb
+    $ make sam9x60_curiosity.itb
 
 ## 4. Loading FIT image in u-boot
 
