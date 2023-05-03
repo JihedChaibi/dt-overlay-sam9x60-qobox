@@ -1,0 +1,30 @@
+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+/*
+ * sam9x60_curiosity_pda5.dtso - Device Tree file for SAM9X60-CURIOSITY board
+ * overlay blob for clock node.
+ *
+ * Copyright (C) 2022 Microchip Technology, Inc. and its subsidiaries
+ * Author: Durai Manickam KR <durai.manickamkr@microchip.com>
+ *
+ */
+/dts-v1/;
+/plugin/;
+
+&{/} {
+	model = "Microchip SAM9X60-CURIOSITY Qobox";
+
+	clocks {
+		slow_xtal {
+			status = "disabled";
+		};
+
+		main_xtal {
+			status = "disabled";
+		};
+
+		internal_oscillator {
+			clock-frequency = <4000000>;
+		};
+	};
+
+};
