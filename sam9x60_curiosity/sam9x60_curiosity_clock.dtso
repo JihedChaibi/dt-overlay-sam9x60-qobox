@@ -23,7 +23,7 @@
 		};
 
 		internal_oscillator {
-			clock-frequency = <4000000>;
+			clock-frequency = <24000000>;
 		};
 	};
 

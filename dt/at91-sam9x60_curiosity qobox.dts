@@ -38,7 +38,7 @@
 		};
 
 		internal_oscillator {
-			clock-frequency = <4000000>;
+			clock-frequency = <24000000>;
 		};
 	};
 
@@ -197,7 +197,7 @@
 
 				rootfs@800000 {
 					label = "rootfs";
-					reg = <0x800000 0x1f800000>;
+					reg = <0x800000 0x7800000>;
 				};
 			};
 		};

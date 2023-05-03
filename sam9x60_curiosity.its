@@ -45,9 +45,9 @@
 			};
 		};
 
-		fdt_pda5 {
-			description = "Device Tree blob pda5000 overlay";
-			data = /incbin/("./sam9x60_curiosity/sam9x60_curiosity_pda5.dtbo");
+		fdt_clock {
+			description = "Device Tree blob clock overlay";
+			data = /incbin/("./sam9x60_curiosity/sam9x60_curiosity_clock.dtbo");
 			type = "flat_dt";
 			arch = "arm";
 			compression = "none";
@@ -92,9 +92,9 @@
 			fdt = "base_fdt";
 		};
 
-		pda5 {
-			description = "FDT overlay blob for PDA TM5000 screen";
-			fdt = "fdt_pda5";
+		clock {
+			description = "FDT overlay blob for clocks";
+			fdt = "fdt_clock";
 		};
 
 		wilc {
