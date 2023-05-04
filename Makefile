@@ -2,10 +2,10 @@ ARCH?=arm
 CC?=$(CROSS_COMPILE)gcc
 DTC_OPTIONS?=-@
 DTC_OPTIONS += -Wno-unit_address_vs_reg -Wno-graph_child_address -Wno-pwms_property
-KERNEL_DIR?=../linux
+KERNEL_DIR?=/home/bladerunner/sam9x60-qontrol/build/tmp/work-shared/sam9x60-qobox/kernel-source
 KERNEL_BUILD_DIR?=$(KERNEL_DIR)
 DTC?=$(KERNEL_BUILD_DIR)/scripts/dtc/dtc
-BDIR?=sam9x60_curiosity
+BDIR?=sam9x60_qobox
 
 # workaround to make mkimage use the same dtc as we do
 PATH:=$(shell dirname $(DTC)):$(PATH)
