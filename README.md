@@ -79,24 +79,3 @@ To load additional FIT configurations, just append another configuration to the 
 Example to load the image sensor controller Device Tree overlay + sensor omnivision 0v7740:
 
     bootm 0x24000000#kernel_dtb#isc#ov7740
-
-## 5. Contributing
-
-To contribute to Microchip Device Tree Overlays, you should submit patches for 
-review to the github pull-request facility directly. Do not forget to Cc the 
-maintainers.
-
-Maintainers:
-
-Cristian Birsan <cristian.birsan@microchip.com>
-
-Nicolas Ferre <nicolas.ferre@microchip.com>
-
-For PolarFire SoC (MPFS), please also Cc:
-
-Valentina Fernandez Alanis <valentina.fernandezalanis@microchip.com>
-
-When creating patches insert the [dt-overlay-mchp] tag in the subject, for example
-use something like:
-
-    git format-patch -s --subject-prefix='dt-overlay-mchp][PATCH' <origin>
