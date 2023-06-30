@@ -25,14 +25,9 @@
 
 	clocks {
 		slow_xtal {
-			status = "disabled";
+			clock-frequency = <32768>;
 		};
-
 		main_xtal {
-			status = "disabled";
-		};
-
-		internal_oscillator {
 			clock-frequency = <24000000>;
 		};
 	};
