@@ -268,6 +268,14 @@
 		};
 	};
 
+
+	usb0 {
+		pinctrl_usba_vbus: usba_vbus {
+			atmel,pins = <AT91_PIOA 27 AT91_PERIPH_GPIO AT91_PINCTRL_NONE>;
+		};
+	};
+
+
 }; /* pinctrl */
 
 &pwm0 {
