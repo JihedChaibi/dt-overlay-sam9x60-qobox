@@ -148,7 +148,7 @@
 
 				rootfs@800000 {
 					label = "rootfs";
-					reg = <0x700000 0x1f800000>;
+					reg = <0x800000 0x1f800000>;
 				};
 			};
 		};
@@ -304,6 +304,13 @@
 		compatible = "atmel,tcb-timer";
 		reg = <1>;
 	};
+};
+
+&usb0 {
+	atmel,vbus-gpio = <&pioA 27 GPIO_ACTIVE_HIGH>;
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_usba_vbus>;
+	status = "okay";
 };
 
 &watchdog {
