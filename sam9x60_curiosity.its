@@ -9,7 +9,7 @@
 /dts-v1/;
 
 / {
-	description = "Microchip SAM9X60-Curiosity FIT Image";
+	description = "Microchip SAM9X60-QOBOX FIT Image";
 	#address-cells = <1>;
 
 	images {
@@ -31,7 +31,7 @@
 		};
 
 		base_fdt {
-			description = "SAM9X60-Curiosity Flattened Device Tree blob";
+			description = "SAM9X60-QOBOX Flattened Device Tree blob";
 			data = /incbin/("./at91-sam9x60_curiosity_qobox.dtb");
 			type = "flat_dt";
 			arch = "arm";
@@ -67,13 +67,13 @@
 		default = "kernel_dtb";
 
 		kernel_dtb {
-			description = "Linux kernel and base FDT blob for SAM9X60-Curiosity board";
+			description = "Linux kernel and base FDT blob for SAM9X60-QOBOX board";
 			kernel = "kernel";
 			fdt = "base_fdt";
 		};
 
 		base_dtb {
-			description = "Base FDT blob for SAM9X60-Curiosity board";
+			description = "Base FDT blob for SAM9X60-QOBOX board";
 			fdt = "base_fdt";
 		};
 
