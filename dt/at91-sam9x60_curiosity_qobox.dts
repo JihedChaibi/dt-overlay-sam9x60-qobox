@@ -154,7 +154,9 @@
 	atmel,flexcom-mode = <ATMEL_FLEXCOM_MODE_TWI>;
 	status = "okay";
 
-	i2c0: i2c@600 {
+	i2c11: i2c@600 {
+		#address-cells = <1>;
+        #size-cells = <0>;
 		dmas = <0>, <0>;
 		pinctrl-names = "default";
 		pinctrl-0 = <&pinctrl_flx11_default>;
@@ -166,6 +168,7 @@
 		pn54x: pn54x@28 {
 			status="okay";
 			compatible ="nxp,pn547";
+			clock-frequency = <400000>;
 			reg = <0x28>;
 			interrupt-gpios = <&pioB 24 GPIO_ACTIVE_HIGH>;
 			enable-gpios = <&pioB 22 GPIO_ACTIVE_HIGH>;
