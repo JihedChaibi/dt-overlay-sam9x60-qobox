@@ -156,7 +156,7 @@
 
 	i2c11: i2c@600 {
 		#address-cells = <1>;
-        #size-cells = <0>;
+		#size-cells = <0>;
 		dmas = <0>, <0>;
 		pinctrl-names = "default";
 		pinctrl-0 = <&pinctrl_flx11_default>;
@@ -194,7 +194,7 @@
 	dbgu {
 		pinctrl_dbgu: dbgu-0 {
 			atmel,pins = <AT91_PIOA 9 AT91_PERIPH_A AT91_PINCTRL_PULL_UP
-				      AT91_PIOA 10 AT91_PERIPH_A AT91_PINCTRL_NONE>;
+					  AT91_PIOA 10 AT91_PERIPH_A AT91_PINCTRL_NONE>;
 		};
 	};
 
