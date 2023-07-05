@@ -14,6 +14,10 @@
 	model = "Microchip SAM9X60 CURIOSITY";
 	compatible = "microchip,sam9x60-curiosity", "microchip,sam9x60", "atmel,at91sam9";
 
+	aliases {
+		spi4 = &spi4;
+		serial1 = &uart0;
+	};
 
 	chosen {
 		stdout-path = "serial0:115200n8";
@@ -150,6 +154,42 @@
 	};
 };
 
+
+&flx0 {
+	atmel,flexcom-mode = <ATMEL_FLEXCOM_MODE_USART>;
+	status = "okay";
+	
+	uart0: serial@200 {
+		pinctrl-names = "default";
+		pinctrl-0 = <&pinctrl_flx0_default>;
+		status = "okay";
+	};
+};
+
+&flx4 {
+	atmel,flexcom-mode = <ATMEL_FLEXCOM_MODE_SPI>;
+	status = "okay";
+
+	spi4: spi@400 {
+		dmas = <0>, <0>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&pinctrl_flx4_default>;
+		status = "okay";
+		qca7000: ethernet@400 {
+			compatible = "qca,qca7000";
+			reg = <0x0>;
+			interrupt-parent = <&pioB>;      /* GPIO Bank 1 */
+			interrupts = <18 0x1>;            /* Index: 18, rising edge */
+			spi-cpha;                         /* SPI mode: CPHA=1 */
+			spi-cpol;                         /* SPI mode: CPOL=1 */
+			spi-max-frequency = <8000000>;    /* freq: 8 MHz */
+			local-mac-address = [ A0 B0 C0 D0 E0 F0 ];
+			status = "okay";
+			};
+
+	};
+};
+
 &flx11 {
 	atmel,flexcom-mode = <ATMEL_FLEXCOM_MODE_TWI>;
 	status = "okay";
@@ -219,6 +259,21 @@
 	};
 
 	flexcom {
+		
+		pinctrl_flx0_default: flx0_uart0 {
+			atmel,pins =
+				<AT91_PIOA 0 AT91_PERIPH_A AT91_PINCTRL_NONE
+				 AT91_PIOA 1 AT91_PERIPH_A AT91_PINCTRL_NONE>;
+		};
+
+		pinctrl_flx4_default: flx4_spi {
+			atmel,pins =
+				<AT91_PIOA 11 AT91_PERIPH_A AT91_PINCTRL_NONE
+				 AT91_PIOA 12 AT91_PERIPH_A AT91_PINCTRL_NONE
+				 AT91_PIOA 13 AT91_PERIPH_A AT91_PINCTRL_NONE
+				 AT91_PIOA 14 AT91_PERIPH_A AT91_PINCTRL_NONE>;
+		};
+
 		pinctrl_flx11_default: flx11_twi {
 			atmel,pins =
 				<AT91_PIOB 19 AT91_PERIPH_A AT91_PINCTRL_PULL_UP
