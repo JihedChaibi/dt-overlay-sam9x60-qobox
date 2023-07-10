@@ -171,11 +171,13 @@
 	status = "okay";
 
 	spi4: spi@400 {
+		#address-cells = <1>;
+		#size-cells = <0>;
 		dmas = <0>, <0>;
 		pinctrl-names = "default";
 		pinctrl-0 = <&pinctrl_flx4_default>;
 		status = "okay";
-		qca7000: ethernet@400 {
+		qca7000: ethernet@0 {
 			compatible = "qca,qca7000";
 			reg = <0x0>;
 			interrupt-parent = <&pioB>;      /* GPIO Bank 1 */
