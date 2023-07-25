@@ -208,12 +208,13 @@
 		status = "okay";
 
 		pn54x: pn54x@51 {
-			status="okay";
 			compatible ="nxp,pn547";
-			clock-frequency = <400000>;
 			reg = <0x51>;
+			clock-frequency = <400000>;
+            interrupt-parent = <&pioB>;
 			interrupt-gpios = <&pioB 24 GPIO_ACTIVE_HIGH>;
 			enable-gpios = <&pioB 22 GPIO_ACTIVE_HIGH>;
+			status="okay";
 		};
 	};
 };
