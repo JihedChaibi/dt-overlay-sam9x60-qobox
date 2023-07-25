@@ -207,11 +207,11 @@
 		i2c-digital-filter-width-ns = <35>;
 		status = "okay";
 
-		pn54x: pn54x@28 {
+		pn54x: pn54x@51 {
 			status="okay";
 			compatible ="nxp,pn547";
 			clock-frequency = <400000>;
-			reg = <0x28>;
+			reg = <0x51>;
 			interrupt-gpios = <&pioB 24 GPIO_ACTIVE_HIGH>;
 			enable-gpios = <&pioB 22 GPIO_ACTIVE_HIGH>;
 		};
