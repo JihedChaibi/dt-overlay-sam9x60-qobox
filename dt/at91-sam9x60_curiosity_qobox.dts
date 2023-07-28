@@ -229,8 +229,8 @@
 		pinctrl-names = "default","gpio";
 		pinctrl-0 = <&pinctrl_flx11_default>;
 		pinctrl-1 = <&pinctrl_i2c_pn71>;
-		scl-gpios = <&pioB 19 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
-		sda-gpios = <&pioB 20 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
+		scl-gpios = <&pioB 20 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
+		sda-gpios = <&pioB 19 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
 		status = "okay";
 
 		pn54x: pn54x@51 {
