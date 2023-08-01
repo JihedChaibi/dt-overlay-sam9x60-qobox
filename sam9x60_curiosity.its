@@ -44,23 +44,6 @@
 				algo = "sha1";
 			};
 		};
-
-		fdt_wilc3000 {
-			description = "Device Tree blob WILC3000 overlay";
-			data =
-			/incbin/("./sam9x60_curiosity/sam9x60_curiosity_wilc3000.dtbo");
-			type = "flat_dt";
-			arch = "arm";
-			compression = "none";
-			load = <0x23110000>;
-			hash-1 {
-				algo = "crc32";
-			};
-			hash-2 {
-				algo = "sha1";
-			};
-		};
-
     };
 
 	configurations {
@@ -75,11 +58,6 @@
 		base_dtb {
 			description = "Base FDT blob for SAM9X60-QOBOX board";
 			fdt = "base_fdt";
-		};
-
-		wilc {
-			description = "FDT overlay blob for WILC3000";
-			fdt = "fdt_wilc3000";
 		};
 	};
 };
