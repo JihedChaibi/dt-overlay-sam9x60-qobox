@@ -175,16 +175,32 @@
 		#size-cells = <0>;
 		dmas = <0>, <0>;
 		pinctrl-names = "default";
-		pinctrl-0 = <&pinctrl_flx4_default>;
-		num-chipselects = <2>;
-		cs-gpios = <&pioA 14 GPIO_ACTIVE_HIGH>, <&pioA 7 GPIO_ACTIVE_HIGH>, <&pioA 15 GPIO_ACTIVE_HIGH>;
+		pinctrl-0 = <&pinctrl_spi4_default>;
+		num-chipselects = <3>;
+        gpio-miso = <&pioA 11 0>;
+        gpio-mosi = <&pioA 12 0>;
+        gpio-sck = <&pioA 13 0>;
+		cs-gpios = <&pioA 15 GPIO_ACTIVE_LOW>, <&pioA 14 GPIO_ACTIVE_LOW>, <&pioA 7 GPIO_ACTIVE_LOW>;
 		status = "okay";
 
-		qca7000: main_plc_ethernet@0 {
-			compatible = "qca,qca7000";
+		wifi_spi:wilc_spi@0 {
+			compatible = "microchip,wilc1000", "microchip,wilc3000";
 			reg = <0>;
+			spi-max-frequency = <48000000>;
+			interrupt-parent = <&pioB>;
+			interrupts = <18 IRQ_TYPE_EDGE_RISING>; 
+			reset-gpios = <&pioC 27 GPIO_ACTIVE_HIGH>;
+			chip_en-gpios = <&pioC 24 GPIO_ACTIVE_HIGH>;
+			//pinctrl-0 = <&pinctrl_wilc1000_default>;
+			//pinctrl-names = "default";
+			status = "okay";
+		};
+
+		qca7000: main_plc_ethernet@1 {
+			compatible = "qca,qca7000";
+			reg = <1>;
 			interrupt-parent = <&pioA>;      /* GPIO Bank 1 */
-			interrupts = <17 0x1>;            /* Index: 17, rising edge */
+			interrupts = <17 IRQ_TYPE_EDGE_RISING>;            /* Index: 17, rising edge */
 			spi-cpha;                         /* SPI mode: CPHA=1 */
 			spi-cpol;                         /* SPI mode: CPOL=1 */
 			spi-max-frequency = <8000000>;    /* freq: 8 MHz */
@@ -192,27 +208,17 @@
 			status = "okay";
 			};
 
-		iso15118_qca7000: iso15118_plc@1 {
+		iso15118_qca7000: iso15118_plc@2 {
 			compatible = "qca,qca7000";
-			reg = <1>;
+			reg = <2>;
 			interrupt-parent = <&pioA>;       /* GPIO Bank 1 */
-			interrupts = <24 0x1>;            /* Index: 24, rising edge */
+			interrupts = <24 IRQ_TYPE_EDGE_RISING>;            /* Index: 24, rising edge */
 			spi-cpha;                         /* SPI mode: CPHA=1 */
 			spi-cpol;                         /* SPI mode: CPOL=1 */
 			spi-max-frequency = <8000000>;    /* freq: 8 MHz */
 			local-mac-address = [ C4 93 00 23 50 E5 ];
 			status = "okay";
 			};
-
-		wifi_spi:wilc_spi@2 {
-			compatible = "microchip,wilc1000", "microchip,wilc3000";
-			reg = <2>;
-			spi-max-frequency = <48000000>;
-			irq-gpios = <&pioB 18 GPIO_ACTIVE_HIGH>;
-			reset-gpios = <&pioC 27 GPIO_ACTIVE_HIGH>;
-			chip_en-gpios = <&pioC 24 GPIO_ACTIVE_HIGH>;
-			status = "okay";
-		};
 
 	};
 };
@@ -227,7 +233,7 @@
 		clock-frequency = <100000>;
 		dmas = <0>, <0>;
 		pinctrl-names = "default","gpio";
-		pinctrl-0 = <&pinctrl_flx11_default>;
+		pinctrl-0 = <&pinctrl_i2c11_default>;
 		scl-gpios = <&pioB 20 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
 		sda-gpios = <&pioB 19 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
 		status = "okay";
@@ -294,17 +300,17 @@
 				 AT91_PIOA 1 AT91_PERIPH_A AT91_PINCTRL_NONE>;
 		};
 
-		pinctrl_flx4_default: flx4_spi {
+		pinctrl_spi4_default: flx4_spi_pinctl {
 			atmel,pins =
 				<AT91_PIOA 11 AT91_PERIPH_A AT91_PINCTRL_NONE
 				 AT91_PIOA 12 AT91_PERIPH_A AT91_PINCTRL_NONE
 				 AT91_PIOA 13 AT91_PERIPH_A AT91_PINCTRL_NONE
+				 AT91_PIOA 15 AT91_PERIPH_A AT91_PINCTRL_NONE
 				 AT91_PIOA 14 AT91_PERIPH_A AT91_PINCTRL_NONE
-				 AT91_PIOA 7  AT91_PERIPH_B AT91_PINCTRL_NONE
-				 AT91_PIOA 15 AT91_PERIPH_A AT91_PINCTRL_NONE>;
+				 AT91_PIOA 7  AT91_PERIPH_B AT91_PINCTRL_NONE>;
 		};
 
-		pinctrl_flx11_default: flx11_twi {
+		pinctrl_i2c11_default: flx11_twi_pinctl {
 			atmel,pins =
 				<AT91_PIOB 19 AT91_PERIPH_C AT91_PINCTRL_PULL_UP
 				 AT91_PIOB 20 AT91_PERIPH_C AT91_PINCTRL_PULL_UP>;
