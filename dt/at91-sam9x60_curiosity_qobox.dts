@@ -363,6 +363,8 @@
 		};
 	};
 
+	/* Conflict with ethernet
+
 	pwm0 {
 		pinctrl_pwm0_0: pwm0_0 {
 			atmel,pins = <AT91_PIOB 12 AT91_PERIPH_B AT91_PINCTRL_NONE>;
@@ -372,23 +374,27 @@
 			atmel,pins = <AT91_PIOB 13 AT91_PERIPH_B AT91_PINCTRL_NONE>;
 		};
 	};
+	*/
 
-
+	/* Conflict with PLC
 	usb0 {
-		/* TO-DO*/
+		// TO-DO
 		pinctrl_usba_vbus: usba_vbus {
 			atmel,pins = <AT91_PIOA 27 AT91_PERIPH_GPIO AT91_PINCTRL_NONE>;
 		};
 	};
+	*/
 
 
 }; /* pinctrl */
 
+/* Conflict with ethernet
 &pwm0 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_pwm0_0 &pinctrl_pwm0_1>;
 	status = "okay";
 };
+*/
 
 &rtt {
 	atmel,rtt-rtc-time-reg = <&gpbr 0x0>;
@@ -415,12 +421,13 @@
 	};
 };
 
+/* Conflict with PLC
 &usb0 {
 	atmel,vbus-gpio = <&pioA 27 GPIO_ACTIVE_HIGH>;
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_usba_vbus>;
 	status = "okay";
-};
+};*/
 
 &watchdog {
 	status = "okay";
