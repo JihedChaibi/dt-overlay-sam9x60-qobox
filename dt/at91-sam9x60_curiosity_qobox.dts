@@ -188,11 +188,11 @@
 			reg = <0>;
 			spi-max-frequency = <48000000>;
 			interrupt-parent = <&pioB>;
-			interrupts = <18 IRQ_TYPE_EDGE_RISING>; 
+			interrupts = <18 0>; 
 			reset-gpios = <&pioC 27 GPIO_ACTIVE_HIGH>;
 			chip_en-gpios = <&pioC 24 GPIO_ACTIVE_HIGH>;
-			//pinctrl-0 = <&pinctrl_wilc1000_default>;
-			//pinctrl-names = "default";
+			pinctrl-names = "default";
+			pinctrl-0 = <&pinctrl_wilc1000_default>;
 			status = "okay";
 		};
 
@@ -241,6 +241,8 @@
 		pn54x: pn54x@28 {
 			compatible ="nxp,pn547";
 			reg = <0x28>;
+			pinctrl-names = "default","gpio";
+			pinctrl-0 = <&pinctrl_pn54_default>;
 			clock-frequency = <400000>;
             interrupt-parent = <&pioB>;
 			interrupt-gpios = <&pioB 24 GPIO_ACTIVE_HIGH>;
@@ -310,10 +312,22 @@
 				 AT91_PIOA 7  AT91_PERIPH_B AT91_PINCTRL_NONE>;
 		};
 
+		pinctrl_wilc1000_default: flx4_wlc_pinctl {
+			atmel,pins =
+				<AT91_PIOB 18 AT91_PERIPH_A AT91_PINCTRL_NONE       
+				 AT91_PIOC 27 AT91_PERIPH_C AT91_PINCTRL_PULL_UP
+				 AT91_PIOC 24 AT91_PERIPH_B AT91_PINCTRL_PULL_DOWN>; 
+		};
+
 		pinctrl_i2c11_default: flx11_twi_pinctl {
 			atmel,pins =
 				<AT91_PIOB 19 AT91_PERIPH_C AT91_PINCTRL_PULL_UP
 				 AT91_PIOB 20 AT91_PERIPH_C AT91_PINCTRL_PULL_UP>;
+		};
+		pinctrl_pn54_default: flx11_pn54_pinctl {
+			atmel,pins =
+				<AT91_PIOB 22 AT91_PERIPH_C AT91_PINCTRL_NONE
+				 AT91_PIOB 24 AT91_PERIPH_GPIO AT91_PINCTRL_NONE>;
 		};
 	};
 
