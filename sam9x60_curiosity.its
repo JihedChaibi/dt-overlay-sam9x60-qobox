@@ -32,7 +32,7 @@
 
 		base_fdt {
 			description = "SAM9X60-QOBOX Flattened Device Tree blob";
-			data = /incbin/("./at91-sam9x60_curiosity_qobox.dtb");
+			data = /incbin/("./at91-sam9x60_qobox.dtb");
 			type = "flat_dt";
 			arch = "arm";
 			compression = "none";
